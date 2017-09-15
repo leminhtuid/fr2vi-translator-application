@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<dictionary>
+	<word src="fille">girl</word>
+  <word src="bonjour">hello</word>
+  <word src="prénom">name</word>
+  <word src="ami">friend</word>
+  <word src="amour">love</word>
+  <word src="argent">money</word>
+  <word src="or">gold</word>
+  <word src="eau">water</word>
+  <word src="bien">good</word>
+  <word src="garçon">boy</word>
+</dictionary>
