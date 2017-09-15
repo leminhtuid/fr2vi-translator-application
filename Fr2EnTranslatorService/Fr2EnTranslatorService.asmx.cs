@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Services;
+using System.Xml.Linq;
 
 namespace Fr2EnTranslatorService
 {
@@ -16,6 +14,13 @@ namespace Fr2EnTranslatorService
     // [System.Web.Script.Services.ScriptService]
     public class Fr2EnTranslatorService : System.Web.Services.WebService
     {
-
+        [WebMethod]
+        public string TransFr2En(string input)
+        {
+            return XElement.Load(Server.MapPath("~/App_Data/fr-2-en.xml"))
+                .Elements("word").Where(n => (string)n.Attribute("src") == input)
+                .Select(n => n.Value)
+                .FirstOrDefault();
+        }
     }
 }
