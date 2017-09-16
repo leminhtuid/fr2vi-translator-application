@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+
+<dictionary>
+	<word src="hello">chào</word>
+  <word src="cat">con mèo</word>
+  <word src="water">nước</word>
+  <word src="friend">bạn</word>
+  <word src="love">tình yêu</word>
+  <word src="money">tiền</word>
+  <word src="gold">vàng</word>
+  <word src="good">tốt</word>
+  <word src="boy">con trai</word>
+  <word src="girl">con gái</word>
+</dictionary>
