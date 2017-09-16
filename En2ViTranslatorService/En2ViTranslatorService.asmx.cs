@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Xml.Linq;
 
 namespace En2ViTranslatorService
 {
@@ -16,6 +17,13 @@ namespace En2ViTranslatorService
     // [System.Web.Script.Services.ScriptService]
     public class En2ViTranslatorService : System.Web.Services.WebService
     {
-        
+        [WebMethod]
+        public string TransEn2Vi(string input)
+        {
+            return XElement.Load(Server.MapPath("~/App_Data/en-2-vi.xml"))
+                .Elements("word").Where(n => (string)n.Attribute("src") == input)
+                .Select(n => n.Value)
+                .FirstOrDefault();
+        }
     }
 }
