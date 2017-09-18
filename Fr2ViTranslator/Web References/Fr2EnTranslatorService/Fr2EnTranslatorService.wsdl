@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="TransFr2En">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransFr2EnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransFr2EnResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TransFr2EnSoapIn">
+    <wsdl:part name="parameters" element="tns:TransFr2En" />
+  </wsdl:message>
+  <wsdl:message name="TransFr2EnSoapOut">
+    <wsdl:part name="parameters" element="tns:TransFr2EnResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Fr2EnTranslatorServiceSoap">
+    <wsdl:operation name="TransFr2En">
+      <wsdl:input message="tns:TransFr2EnSoapIn" />
+      <wsdl:output message="tns:TransFr2EnSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Fr2EnTranslatorServiceSoap" type="tns:Fr2EnTranslatorServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TransFr2En">
+      <soap:operation soapAction="http://tempuri.org/TransFr2En" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Fr2EnTranslatorServiceSoap12" type="tns:Fr2EnTranslatorServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TransFr2En">
+      <soap12:operation soapAction="http://tempuri.org/TransFr2En" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Fr2EnTranslatorService">
+    <wsdl:port name="Fr2EnTranslatorServiceSoap" binding="tns:Fr2EnTranslatorServiceSoap">
+      <soap:address location="http://localhost:7029/Fr2EnTranslatorService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Fr2EnTranslatorServiceSoap12" binding="tns:Fr2EnTranslatorServiceSoap12">
+      <soap12:address location="http://localhost:7029/Fr2EnTranslatorService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
