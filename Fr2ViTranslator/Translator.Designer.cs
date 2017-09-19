@@ -109,7 +109,6 @@
             this.Name = "Translator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fr2Vi Translator";
-            this.Load += new System.EventHandler(this.Translator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

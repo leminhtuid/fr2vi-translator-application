@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Fr2ViTranslator
@@ -16,16 +10,11 @@ namespace Fr2ViTranslator
             InitializeComponent();
         }
 
-        private void Translator_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTranslate_Click(object sender, EventArgs e)
         {
             txtVietnamese.Text = String.Empty;
 
-            string input = txtFrench.Text;
+            string input = txtFrench.Text.ToLower();
 
             if (input == String.Empty)
             {
@@ -41,15 +30,22 @@ namespace Fr2ViTranslator
                 En2ViTranslatorService.En2ViTranslatorService en2viService
                     = new En2ViTranslatorService.En2ViTranslatorService();
 
-                string output = en2viService.TransEn2Vi(fr2enService.TransFr2En(input));
+                try
+                {
+                    string output = en2viService.TransEn2Vi(fr2enService.TransFr2En(input));
 
-                if (output == null)
-                {
-                    lblWarning.Text = "* This word is not in dictionary.";
+                    if (output == null)
+                    {
+                        lblWarning.Text = "* This word is not in dictionary";
+                    }
+                    else
+                    {
+                        txtVietnamese.Text = output;
+                    }
                 }
-                else
+                catch(Exception ex)
                 {
-                    txtVietnamese.Text = output;
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
